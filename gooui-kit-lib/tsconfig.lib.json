@@ -1,0 +1,20 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "build",                    // Output compiled files to the build directory
+      "declaration": true,                  // Generate .d.ts files for TypeScript types
+      "declarationMap": true,               // Generate .d.ts.map files for easier debugging
+      "sourceMap": true,                    // Include source maps for easier debugging
+      "module": "ESNext",                   // Use ESNext for modern bundlers
+      "target": "ES2019",                   // Target modern JavaScript
+      "moduleResolution": "node",           // Resolve modules in Node.js style
+      "jsx": "react",                       // Use React JSX support
+      "esModuleInterop": true,              // Allow compatibility with CommonJS modules
+      "skipLibCheck": true,                 // Skip type checking of declaration files
+      "removeComments": true,               // Remove comments in compiled output
+      "strict": true                        // Enable strict mode for type checking
+    },
+    "include": ["src/**/*"],                // Include all files in the src folder
+    "exclude": ["node_modules", "build"]   // Exclude node_modules and build output
+  }
+  
