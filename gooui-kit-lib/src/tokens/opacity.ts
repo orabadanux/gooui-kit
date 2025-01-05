@@ -1,3 +1,4 @@
+// Opacity values for elements, defined as percentages.
 export const opacity = {
     'opacity-0': 0,
     'opacity-5': 5,

@@ -1,4 +1,6 @@
 /** @jsxImportSource @emotion/react */
+
+// Import necessary libraries and tokens.
 import React, { useState } from "react";
 import { css } from "@emotion/react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,14 +12,16 @@ import { IconProps } from "../Icon/Icon";
 import { borderRadius } from "../../tokens/border";
 import * as TablerIcons from "@tabler/icons-react";
 
+// Define the properties (props) for the Button component.
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
-  leftIcon?: string | React.ReactNode;
-  rightIcon?: string | React.ReactNode;
-  state?: "default" | "hover" | "pressed" | "disabled";
-  onClick?: () => void;
+  label: string; // The text label displayed on the button.
+  leftIcon?: string | React.ReactNode; // Icon displayed on the left of the label.
+  rightIcon?: string | React.ReactNode; // Icon displayed on the right of the label.
+  state?: "default" | "hover" | "pressed" | "disabled"; // Current state of the button.
+  onClick?: () => void; // Function called when the button is clicked.
 }
 
+// Define the Button component.
 export const Button: React.FC<ButtonProps> = ({
   label,
   leftIcon,
@@ -26,11 +30,12 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   ...rest
 }) => {
+  // Local state for hover, pressed, and mouse position (used for effects).
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // Omit any React-specific drag/animation events that conflict with Framer Motion
+  // Clean up unwanted event handlers from props.
   const {
     onAnimationStart: _omitAnim,
     onDrag: _omitDrag,
@@ -39,18 +44,21 @@ export const Button: React.FC<ButtonProps> = ({
     ...cleanedProps
   } = rest;
 
+  // Calculate the mouse position relative to the button for dynamic effects.
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     setMousePosition({ x, y });
   };
-
+  
+  // Determine the current button state based on props and interactions.
   const currentState =
     state === "disabled"
       ? "disabled"
       : state || (isPressed ? "pressed" : isHovered ? "hover" : "default");
-
+  
+  // Define styles for each state of the button.
   const states = {
     default: {
       backgroundColor: colors["color-background-primary-01-default"],
@@ -87,8 +95,9 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const currentStyle = states[currentState];
-  const blobSize = 50;
+  const blobSize = 50; // Size of the blob hover effect.
 
+  // CSS styles for the button.
   const buttonStyles = css`
     display: inline-flex;
     align-items: center;
@@ -112,6 +121,7 @@ export const Button: React.FC<ButtonProps> = ({
     border-radius: ${borderRadius["borderRadius-circle"]};
   `;
 
+  // Styles for hover effects (blob).
   const blobStyles = css`
     position: absolute;
     width: ${blobSize}px;
@@ -128,6 +138,7 @@ export const Button: React.FC<ButtonProps> = ({
     transition: background 0.3s ease;
   `;
 
+  // Styles for the content (label and icons) inside the button.
   const contentStyles = css`
     position: relative;
     z-index: 2;
@@ -143,6 +154,7 @@ export const Button: React.FC<ButtonProps> = ({
     strokeWidth?: number;
   }
   
+  // Helper function to render left or right icons.
   const renderIcon = (icon: string | React.ReactNode, isPressed: boolean) => {
     if (React.isValidElement(icon)) {
       return React.cloneElement(icon as React.ReactElement<any>, {
@@ -189,9 +201,10 @@ export const Button: React.FC<ButtonProps> = ({
     return null;
   };
   
-
+  // Render the button component.
   return (
     <>
+      {/* Invisible SVG blob for hover effects */}
       <svg style={{ display: "none" }}>
         <defs>
           <filter id="gooey">
@@ -238,9 +251,10 @@ export const Button: React.FC<ButtonProps> = ({
         whileTap={{
           scale: 0.95,
         }}
-        {...cleanedProps} // No more 'onDragEnd' conflict
+        {...cleanedProps}
       >
         <AnimatePresence>
+          {/* Blob effect on hover */}
           {isHovered && (
             <motion.div
               css={blobStyles}
@@ -271,6 +285,7 @@ export const Button: React.FC<ButtonProps> = ({
           )}
         </AnimatePresence>
 
+        {/* Content of the button */}
         <div css={contentStyles}>
           {leftIcon && renderIcon(leftIcon, isPressed)}
 

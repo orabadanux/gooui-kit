@@ -1,3 +1,4 @@
+// Defines a range of size values to ensure consistency in spacing and dimensions across the UI.
 export const sizes = {
     'size-0': 0,
     'size-10': 1,

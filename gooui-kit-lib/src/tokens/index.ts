@@ -1,3 +1,4 @@
+// Exports all tokens and definitions for easy import in other parts of the library.
 export * from './colors';
 export * from './sizes';
 export * from './strokeSizes';

@@ -1,6 +1,6 @@
 {
   "name": "gooui-kit",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "A reusable UI kit with Button and Icon components",
   "main": "dist/index.js",
