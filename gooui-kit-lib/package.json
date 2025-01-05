@@ -1,0 +1,48 @@
+{
+  "name": "gooui-kit",
+  "version": "1.0.6",
+  "type": "module",
+  "description": "A reusable UI kit with Button and Icon components",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:rollup": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "npm run clean && npm run build:rollup && npm run build:types",
+    "dev": "rollup -c -w",
+    "publish:local": "npm run build && yalc publish",
+    "test": "jest",
+    "lint": "eslint src/**/*.{ts,tsx}"
+  },
+  "peerDependencies": {
+    "@tabler/icons-react": "^3.26.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "eslint": "^8.0.0",
+    "framer-motion": "^11.15.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.20.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.2.2"
+  }
+}

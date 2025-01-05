@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "gooui-kit": {
+      "signature": "347d20a2f798cb35caeab23c723b20af",
+      "file": true
+    }
+  }
+}

@@ -1,0 +1,6 @@
+src/
+node_modules/
+.git/
+.babelrc
+rollup.config.js
+tsconfig.json
