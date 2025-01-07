@@ -1,7 +1,7 @@
 // Font family tokens for primary and secondary typography.
 export const fontFamilyTokens = {
-    'primary': 'Red Hat Display',
-    'secondary': 'Satoshi'
+  primary: "'Red Hat Display', sans-serif",
+  secondary: "'Satoshi', sans-serif",
   };
 
 // Font size tokens defined in pixels for different text elements.
